@@ -1,6 +1,10 @@
+import React from 'react'
+import Layout from 'components/layout'
+import { wrapper } from 'redux/store'
+
 import theme, { StyledTheme } from 'styles/theme'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import { StylesProvider, ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,13 +12,13 @@ function MyApp({ Component, pageProps }) {
       <StyledTheme>
         <StylesProvider injectFirst>
           <CssBaseline />
-          <>
+          <Layout>
             <Component {...pageProps} />
-          </>
+          </Layout>
         </StylesProvider>
       </StyledTheme>
     </ThemeProvider>
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

@@ -21,8 +21,18 @@ const theme = createMuiTheme({
   }
 })
 
+const customTheme = {
+  colors: {
+    concrete: '#e4e4e4'
+  }
+}
+
 function StyledComponentsTheme(props) {
-  return <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
+  return (
+    <ThemeProvider theme={{ ...props.theme, ...customTheme }}>
+      {props.children}
+    </ThemeProvider>
+  )
 }
 
 export const StyledTheme = muiWithTheme(StyledComponentsTheme)
